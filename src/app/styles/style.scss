@@ -1,0 +1,138 @@
+@import 'variables';
+@import 'reset';
+
+@mixin mobile {
+    @media (max-width: $mobile){
+        @content;
+    }
+}
+
+.header-pok{
+    display: flex;
+    background-color: $primary-color;
+    padding: 5px 30px;
+    gap: 5px;
+    @include mobile{
+        justify-content: center;
+    }
+    .ball{
+        width: 40px;  
+        & img{
+            width: 100%;  
+        } 
+    }
+    .title{  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    }
+}
+
+main {
+    background-color: $terciary-color;
+    padding: 20px 10%;
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    flex-wrap: wrap;
+    .main-pokemon{
+        .main-pokemon--title {
+            display: flex;
+            background-color: white;
+            border-radius: 15px;
+            padding: 10px 10%;
+            justify-content: center;
+            gap: 20px;
+            .title-icon {
+                width: 30px;
+                & img {
+                    width: 100%;
+                }            
+            }
+            h1 {
+                font-size: 26px;
+                font-weight: 700;
+            }
+        }
+        .pokemon-picture {
+            margin-top: 40px;
+            height: 400px;
+            @include mobile{
+            height: 170px;
+            }
+            & img {
+                height: 100%;
+                @include mobile{
+                    position: absolute; /*gap: ;el gap es espacio entre cajitas*/
+                    height: 250px;
+                    z-index: 1; /*positivo para ponerlo adelante y negativo para ponerlo detras*/
+                    bottom: 250px; /*para ponerlo arriba*/
+                }
+            }
+        }
+    }
+    .main-table {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px 10px;
+        display: grid;/*cuando queremos alinear filas como columnas para tablas*/
+        grid-template-columns: repeat(2, 1fr); /* el 2 son doscolumnas y 1fracion */
+        justify-items: center;
+        position: relative;
+        .table-element {
+            padding: 40px;
+        }
+    }
+    @include mobile{
+        gap: 0px;
+    }
+}
+.pie{
+    background-color: white;
+    width: 100%;
+    padding: 20px;
+    .picture{
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+        @include mobile{
+            gap: 0px;
+            margin: 0 25%;
+            justify-content: center;
+        }
+        .subtitle{
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            padding: 40px;
+        }
+        .imagenes{
+            display: flex;
+            gap: 80px;
+            align-items: center;
+            flex-wrap: wrap;
+            @include mobile{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px 80px;
+            }
+            .poke {
+                width: 100px;
+                height: 100px;
+                padding: 15px 15px;
+                background-color: $secondary-color;
+                border-radius: 20px;
+                img{
+                    width: 100%;
+                }
+                &:hover{
+                    background-color:$terciary-color;
+                }
+            }
+        }
+    }
+}
+
