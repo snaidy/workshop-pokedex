@@ -1,7 +1,17 @@
-import './styles/style.scss';
-// import pokebola from 'src\image\pokebola.png';
+ import './styles/style.scss';
 
-// 3.  En el archivo index.js, debes importar la imagen por ejemplo: import nombreDeLaImagen from '../assets/static/nombre-del-archivo';
-// 4. luego captura la etiqueta img desde el archivo index.js (puedes ser con los métodos document.querySelector("selector") o document.getElementById("id_Img"))
-// 5. Actualiza el atributo src de la etiqueta img, por ejemplo: image.setAttribute('src', nombreDeLaImagen)
 
+import { getPokemons, listPokemons} from './scripts/services/getpokemons.js';
+import { renderPokemons } from './scripts/modules/renderdata.js';
+import { handlePokemonClick } from './scripts/modules/handlepokemon.js';
+
+document.addEventListener("DOMContentLoaded", () => {
+    getPokemons(); // Obtener los datos de los pokemones
+    renderPokemons(listPokemons); // Renderizar los pokemones
+  
+    const footerImages = document.querySelector(".imagenes img");
+  
+    footerImages.forEach((image) => {
+        image.addEventListener("click", handlePokemonClick(containerPokemons, containerTable));
+      });
+  });
