@@ -7,7 +7,7 @@ const getRandomPokemon = (list) => {
 };
 const pokemonList = [];
 
-const renderMainPokemon = (pokemon) => {
+export const renderMainPokemon = (pokemon) => {
   console.log("render", pokemon);
   const mainPokemon = document.createElement("section");
   mainPokemon.className = "main-pokemon";
@@ -27,7 +27,7 @@ const renderMainPokemon = (pokemon) => {
   containerPokemons.appendChild(mainPokemon);
 };
 
-const renderTable = (pokemon) => {
+export const renderTable = (pokemon) => {
   const mainTable = document.createElement("section");
   mainTable.className = "main-table";
   mainTable.innerHTML = `
@@ -70,7 +70,7 @@ const renderFooter = (listPokemons) => {
         .map(
           (pokemon) => `
           <figure class="poke">
-            <img src="${pokemon.image}" alt="${pokemon.name}" data-id="${pokemon.id}">
+            <img src="${pokemon.image}" alt="${pokemon.name}" data-id="${pokemon.name}">
           </figure>
         `
         )
@@ -80,6 +80,20 @@ const renderFooter = (listPokemons) => {
 
   containerPokeFooter.innerHTML = "";
   containerPokeFooter.appendChild(footerPokemon);
+  //-----para escuchar el click de las imagenes del footer
+const pokeElements = containerPokeFooter.querySelectorAll(".poke");
+
+pokeElements.forEach((pokeElement) => {
+  const image = pokeElement.querySelector("img");
+  const pokemonName = image.getAttribute("data-id");
+  const pokemon = listPokemons.find((p) => p.name === pokemonName);
+
+  image.addEventListener("click", () => {
+    renderMainPokemon(pokemon);
+    renderTable(pokemon);
+  });
+});
+
 };
 
 export const renderPokemons = (listPokemons) => {

@@ -14,7 +14,6 @@ export const getPokemons =async () => {
                 try {
                     const resp = await axios.get(pokemon.url);
                     const newPokemon = {
-                    id: i + 1,
                     name: resp.data.name,
                     image: resp.data.sprites.front_default,
                     height: resp.data.height,
