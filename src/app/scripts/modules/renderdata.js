@@ -1,5 +1,6 @@
 const containerPokemons = document.getElementById("containerPokemons");
 const containerPokeFooter = document.getElementById("containerPokeFooter");
+// import { getPokemons, listPokemons} from '../services/getpokemons.js';
 
 const getRandomPokemon = (list) => {
   const randomIndex = Math.floor(Math.random() * list.length);
@@ -60,7 +61,7 @@ export const renderTable = (pokemon) => {
   containerPokemons.appendChild(mainTable);
 };
 
-const renderFooter = (listPokemons) => {
+export const renderFooter = (listPokemons) => {
   const footerPokemon = document.createElement("article");
   footerPokemon.className = "picture";
   footerPokemon.innerHTML = `
