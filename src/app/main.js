@@ -2,7 +2,7 @@ import './styles/style.scss';
 
 
 import { getPokemons, listPokemons} from './scripts/services/getpokemons.js';
-import { renderPokemons, renderMainPokemon, renderTable } from './scripts/modules/renderdata.js';
+import { renderPokemons, renderMainPokemon, renderTable, renderFooter } from './scripts/modules/renderdata.js';
 import { handlePokemonClick } from './scripts/modules/handlepokemon.js';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -30,6 +30,22 @@ pokeElements.forEach((pokeElement) => {
     renderTable(pokemon);
   });
 });
+
+
+const searchInput = document.querySelector(".search input");
+searchInput.addEventListener("input", () => {
+  const searchTerm = searchInput.value.toLowerCase();
+  const filteredPokemon = listPokemons.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(searchTerm)
+  );
+  renderFooter(filteredPokemon, containerPokeFooter[0]);
+});
+
+
+
+
+
+
 
 // // document.addEventListener("DOMContentLoaded", () => {
 // //     getPokemons(); // Obtener los datos de los pokemones
