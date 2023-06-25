@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --mode development",
     "build": "webpack --mode production",
-    "dev": "webpack-dev-server --open"
+    "dev": "webpack-dev-server --open",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -33,5 +34,6 @@
   "devDependencies": {
     "file-loader": "^6.2.0",
     "gh-pages": "^5.0.0"
-  }
+  },
+  "homepage":"https://snaidy.github.io/workshop-pokedex"
 }

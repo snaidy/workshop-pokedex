@@ -31,14 +31,13 @@ pokeElements.forEach((pokeElement) => {
   });
 });
 
-
 const searchInput = document.querySelector(".search input");
 searchInput.addEventListener("input", () => {
   const searchTerm = searchInput.value.toLowerCase();
   const filteredPokemon = listPokemons.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(searchTerm)
   );
-  renderFooter(filteredPokemon, containerPokeFooter[0]);
+  renderFooter(filteredPokemon, containerPokeFooter);
 });
 
 
