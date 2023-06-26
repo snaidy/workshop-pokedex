@@ -15,7 +15,7 @@ export const getPokemons =async () => {
                     const resp = await axios.get(pokemon.url);
                     const newPokemon = {
                     name: resp.data.name,
-                    image: resp.data.sprites.front_default,
+                    image: resp.data.sprites.other['official-artwork'].front_default,
                     height: resp.data.height,
                     experience: resp.data.base_experience,
                     specie: resp.data.species.name,
